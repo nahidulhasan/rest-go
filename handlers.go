@@ -11,7 +11,7 @@ import (
 	"os"
 	"database/sql"
 	"github.com/joho/godotenv"
-	_"github.com/go-sql-driver/mysql"
+	"github.com/go-sql-driver/mysql"
 )
 
 
@@ -21,28 +21,26 @@ var mdb *sql.DB
 
 //dbConn is create a connection for local database
 func dbConn() (db *sql.DB) {
-	//scheme := os.Getenv("DB_SCHEME")
 	host := os.Getenv("DB_HOST")
 	database := os.Getenv("DB_DATABASE")
 	user := os.Getenv("DB_USERNAME")
 	pass := os.Getenv("DB_PASSWORD")
 	port := os.Getenv("DB_PORT")
 
-	dbDriver := "mysql"
+	//dbDriver := "mysql"
 
 
-	db, err := sql.Open(dbDriver, user+":"+pass+"@"+"("+host+":"+port+")/"+database)
+	//db, err := sql.Open(dbDriver, user+":"+pass+"@"+"("+host+":"+port+")/"+database)
 
 
-	/*cfg := mysql.Config{
+	cfg := mysql.Config{
 		User:   user,
 		Passwd: pass,
 		DBName: database,
-		Net:    scheme,
 		Addr:   host + ":" + port,
 	}
 
-	db, err := sql.Open("mysql", cfg.FormatDSN())*/
+	db, err := sql.Open("mysql", cfg.FormatDSN())
 
 	//db, err := sql.Open("mysql", user+":"+pass+"@"+scheme+"("+host+":"+port+")/"+database)
 	if err != nil {
@@ -93,6 +91,7 @@ func TodoIndex(w http.ResponseWriter, r *http.Request)  {
 		if err != nil {
 			panic(err)
 		}
+
 		todos = append(todos, todo)
 	}
 
