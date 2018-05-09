@@ -1,1 +1,1 @@
-# rest_go
+# REST api usning Go
